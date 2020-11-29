@@ -4,7 +4,16 @@
 			"path": "pages/index/index",
 			"style": {}
 		}
-	],
+	    ,{
+            "path" : "pages/wallet/wallet",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"easycom": {
 		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
 	},

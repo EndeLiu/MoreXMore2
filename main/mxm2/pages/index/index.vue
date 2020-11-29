@@ -1,14 +1,27 @@
 <template>
 	<view class="content">
-		<view class="page-container"></view>
-		<u-tabbar v-model="current" :list="list" :mid-button="true"></u-tabbar>
+		<view class="page-container">
+			<Wallet v-if="curPage==='wallet'"></Wallet>
+		</view>
+		<u-tabbar v-model="current" :list="list" :mid-button="true" @change="changePage"></u-tabbar>
 	</view>
 </template>
 
 <script>
+	import Wallet from '../wallet/wallet'
 	export default {
+		components: {
+			Wallet
+		},
+		computed: {
+			curPage () {
+				return this.pageFlags[this.current]
+			}
+		},
 		data() {
 			return {
+				pageFlags: ['wallet', 'add', 'user'],
+				current: 0,
 				list: [{
 					iconPath: "../../static/tabIcon/wallet.png",
 					selectedIconPath: "../../static/tabIcon/wallet_active.png",
@@ -32,15 +45,17 @@
 					isDot: false,
 					customIcon: false,
 				},
-			],
-			current: 0
+			],	
 			}
 		},
 		onLoad() {
 
 		},
 		methods: {
-
+			changePage (index) {
+				this.current = index
+				console.log(this.curPage)
+			}
 		}
 	}
 </script>
