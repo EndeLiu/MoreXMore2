@@ -2,6 +2,7 @@
 	<view class="content">
 		<view class="page-container">
 			<Wallet v-if="curPage==='wallet'"></Wallet>
+			<Add v-if="curPage==='add'"></Add>
 		</view>
 		<u-tabbar v-model="current" :list="list" :mid-button="true" @change="changePage"></u-tabbar>
 	</view>
@@ -9,9 +10,11 @@
 
 <script>
 	import Wallet from '../wallet/wallet'
+	import Add from '../add/add'
 	export default {
 		components: {
-			Wallet
+			Wallet,
+			Add
 		},
 		computed: {
 			curPage () {
